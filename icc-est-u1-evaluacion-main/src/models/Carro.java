@@ -1,23 +1,23 @@
 package models;
 
 public class Carro {
-    private String name;
-    private String model;
+    private String nombre;
+    private String modelo;
 
     private int year;
 
-    public Carro(String name, String model, int year) {
-        this.name = name;
-        this.model = model;
+    public Carro(String nombre, String modelo, int year) {
+        this.nombre = nombre;
+        this.modelo = modelo;
         this.year = year;
     }
 
     public String getPlaca() {
-        return name;
+        return nombre;
     }
 
-    public void setPlaca(String name) {
-        this.name = name;
+    public void setPlaca(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getYear() {
@@ -28,20 +28,28 @@ public class Carro {
         this.year = year;
     }
 
-    public String getName() {
-        return name;
+    public String getnombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setnombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getModel() {
-        return model;
+    public String getmodelo() {
+        return modelo;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setmodelo(String modelo) {
+        this.modelo = modelo;
     }
 
+    @Override
+    public String toString() {
+        return "Carro{" +
+                "nombre='" + nombre + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", year=" + year +
+                '}';
+    }
 }

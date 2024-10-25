@@ -1,77 +1,100 @@
 import models.Person;
 
-/**
- * MetodosOrdenamientoBusqueda
- * 
- * Aqui programar los motodos de busqueda y ordenamiento
- * segun le tocaron en su enunciado de la evaluacion
- * 
- */
 public class MetodosOrdenamientoBusqueda {
 
-    // Selection sort by age
     public void sortByAgeWithSelection(Person[] people) {
-        // TODO: Implement selection sort by age
+        int n = people.length;
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (people[j].getAge() < people[minIndex].getAge()) {
+                    minIndex = j;
+                }
+            }
+            Person temp = people[minIndex];
+            people[minIndex] = people[i];
+            people[i] = temp;
+        }
     }
 
-    // Selection sort by height
     public void sortByHeightWithSelection(Person[] people) {
-        // TODO: Implement selection sort by height
+        int n = people.length;
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (people[j].getHeight() < people[minIndex].getHeight()) {
+                    minIndex = j;
+                }
+            }
+            Person temp = people[minIndex];
+            people[minIndex] = people[i];
+            people[i] = temp;
+        }
     }
 
-    // Insertion sort by age
     public void sortByAgeWithInsertion(Person[] people) {
-        int tamanio = people.length;
-        for (int i = 1 ; i < tamanio ; i++){
-            Person peopleAux = people[i];
+        int n = people.length;
+        for (int i = 1; i < n; i++) {
+            Person key = people[i];
             int j = i - 1;
-            while( j >= 0 ++ people[j].getAge() > peopleAux.getAge()){
-                people[j+1] = people[j];
+            while (j >= 0 && people[j].getAge() > key.getAge()) {
+                people[j + 1] = people[j];
                 j = j - 1;
             }
-        }   people[j+1]= peopleAux;
-        // TODO: Implement insertion sort by age
+            people[j + 1] = key;
+        }
     }
 
-    // Insertion sort by height
     public void sortByHeightWithInsertion(Person[] people) {
-        // TODO: Implement insertion sort by height
+        int n = people.length;
+        for (int i = 1; i < n; i++) {
+            Person key = people[i];
+            int j = i - 1;
+            while (j >= 0 && people[j].getHeight() > key.getHeight()) {
+                people[j + 1] = people[j];
+                j = j - 1;
+            }
+            people[j + 1] = key;
+        }
     }
 
-    // Binary search by age
     public int searchBinaryByAge(Person[] people, int age) {
-
-        int left  = 0 
-        int right = people.length -1;
-
-        while ( left <= right){
-            int mitad = left + ( right - left )/2;
-
-            if ( people [mitad].getAge() < age){
-                return mitad;
+        int left = 0;
+        int right = people.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (people[mid].getAge() == age) {
+                return mid;
             }
-
-            if ( people [mitad].getAge() < age){
-                left = mitad+1 ; 
-            }else {
-                left = mitad-1;
+            if (people[mid].getAge() < age) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
         }
-        // TODO: Implement binary search by age
-        return -1; // Placeholder return value
+        return -1; // Age not found
     }
 
-    // Binary search by height
     public int searchBinaryByHeight(Person[] people, int height) {
-        // TODO: Implement binary search by height
-        return -1; // Placeholder return value
+        int left = 0;
+        int right = people.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (people[mid].getHeight() == height) {
+                return mid;
+            }
+            if (people[mid].getHeight() < height) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return -1; // Height not found
     }
 
-    // Metodo que imprime el listado de personas
-    public void showPeople(Person[] persons) {
-        for (Person person : persons) {
-            System.out.println("Persona de edad " + person.getAge());
+    public void showPeople(Person[] people) {
+        for (Person person : people) {
+            System.out.println(person);
         }
-        // TODO: Implement showPeople
     }
 }
